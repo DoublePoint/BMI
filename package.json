@@ -3,6 +3,12 @@
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint . --fix --ext js,mjs,cjs,ts,mts,cts,vue",
+    "preview": "vite preview"
+  },
   "description": "A Vue 3 + Vite project for building Chrome extensions",
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.21",
@@ -54,12 +60,6 @@
     }
   },
   "private": true,
-  "scripts": {
-    "build": "vite build",
-    "dev": "vite",
-    "lint": "eslint . --fix --ext js,mjs,cjs,ts,mts,cts,vue",
-    "preview": "vite preview"
-  },
   "type": "module",
   "version": "0.0.1"
 }

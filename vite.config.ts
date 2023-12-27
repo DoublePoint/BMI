@@ -42,6 +42,14 @@ export default defineConfig({
           dir: 'src/content-script/iframe/pages',
           baseRoute: 'iframe',
         },
+        {
+          dir: 'src/install',
+          baseRoute: 'install',
+        },
+        {
+          dir: 'src/update',
+          baseRoute: 'update',
+        },
       ],
     }),
 
@@ -89,6 +97,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         iframe: 'src/content-script/iframe/index.html',
+        installed: 'src/install/index.html',
+        update: 'src/update/index.html',
       },
     },
   },
