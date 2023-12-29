@@ -26,17 +26,18 @@ export default defineManifest(async (env) => ({
   background: {
     service_worker: 'src/background/index.ts',
   },
-  content_scripts: [
-    {
-      all_frames: false,
-      js: ['src/content-script/index.ts'],
-      matches: ['*://*/*'],
-      run_at: 'document_end',
-    },
-  ],
+  // content_scripts: [
+  //   {
+  //     all_frames: false,
+  //     js: ['src/content-script/index.ts'],
+  //     matches: ['*://*/*'],
+  //     run_at: 'document_end',
+  //   },
+  // ],
   host_permissions: ['*://*/*'],
   options_page: 'src/options/index.html',
   permissions: ['storage', 'activeTab', 'identity'],
+  icons: {"16": "src/assets/bmi.png", "48": "src/assets/bmi.png", "128": "src/assets/bmi.png"},
   web_accessible_resources: [
     {
       matches: ['*://*/*'],
