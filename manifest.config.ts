@@ -21,6 +21,7 @@ export default defineManifest(async (env) => ({
   // key: 'ekgmcbpgglflmgcfajnglpbcbdccnnje',
   action: {
     default_popup: 'src/popup/index.html',
+    // default_popup: 'src/options/index.html',
   },
   background: {
     service_worker: 'src/background/index.ts',

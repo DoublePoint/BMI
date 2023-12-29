@@ -9,6 +9,8 @@ import { URL, fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 import manifest from './manifest.config'
+//添加ElementPlus
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -57,6 +59,7 @@ export default defineConfig({
       imports: ['vue', 'vue-router', 'vue/macros', '@vueuse/core'],
       dts: 'src/auto-imports.d.ts',
       dirs: ['src/composables/'],
+      resolvers: [ElementPlusResolver()],
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -70,6 +73,8 @@ export default defineConfig({
           prefix: 'i',
           enabledCollections: ['mdi'],
         }),
+        //Element Resolver
+        ElementPlusResolver()
       ],
     }),
 
