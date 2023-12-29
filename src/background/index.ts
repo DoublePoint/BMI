@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(async (opt) => {
 
     chrome.tabs.create({
       active: true,
-      url: chrome.runtime.getURL('./installed.html'),
+      url: chrome.runtime.getURL('./sr/install/index.html'),
     })
   }
 
