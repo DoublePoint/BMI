@@ -71,7 +71,7 @@ export default defineConfig({
         // auto import icons
         IconsResolver({
           prefix: 'i',
-          enabledCollections: ['mdi'],
+          // enabledCollections: ['mdi'],
         }),
         //Element Resolver
         ElementPlusResolver()

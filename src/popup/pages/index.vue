@@ -19,19 +19,18 @@ function calculateNormalWeight(height: number) {
   return { minWeight: minWeight.toFixed(1), maxWeight: maxWeight.toFixed(1) }
 }
 
-// // 示例用法
-// var height = 1.75; // 身高1.75米
-// var bmiRange = [18.5, 24]; // BMI正常范围（男性）
-// var normalWeightRange = calculateNormalWeight(height, bmiRange);
-// console.log('正常体重区间:', normalWeightRange);
-// function getBMIStatus(bmi) {
-//   var status;
-//   if (bmi < 18.5) status = 'Underweight';
-//     else if (bmi >= 18.5 && bmi < 24.9) status = 'Normal weight';
-//     else if (bmi >= 24.9 && bmi < 29.9) status = 'Overweight';
-//     else status = 'Obesity';
-//   return status;
-// }
+// 示例用法
+function getBMIType(bmi) {
+  var status;
+  if (bmi < 18.5) 
+    status = '偏瘦';
+  else if (bmi >= 18.5 && bmi < 24.0) 
+    status = '正常';
+  else if (bmi >= 24.0 && bmi < 270) 
+    status = '过重';
+  else status = '肥胖';
+  return status+" ";
+}
 
 interface BMI {
   t: string
@@ -82,6 +81,7 @@ let bmiResult = ref(0)
 let startWeight = ref(0)
 let endWeight = ref(0)
 let bmiResultClass = ref('')
+let bmiType = ref('')
 
 watch(bmiResult, (newValue) => {
   if (newValue < 18.5) bmiResultClass.value = 'bg-stone-300'
@@ -102,6 +102,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       let a = calculateNormalWeight(person.height)
       startWeight.value = a.minWeight
       endWeight.value = a.maxWeight
+
+      bmiType.value = getBMIType(bmi);
       console.log('submit!')
     } else {
       console.log('error submit!', fields)
@@ -124,10 +126,10 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         style="width: 100%"
       >
         <el-form-item label="您的身高（CM）：">
-          <el-input v-model="person.height" />
+          <el-input v-model="person.height" @change="submitForm" />
         </el-form-item>
         <el-form-item label="您的体重（KG）：">
-          <el-input v-model="person.weight" />
+          <el-input v-model="person.weight" @change="submitForm" />
         </el-form-item>
       </el-form>
     </div>
@@ -149,7 +151,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           class="font-bold text-center text-3xl rounded-md"
           :class="bmiResultClass"
         >
-          BMI:{{ bmiResult }}
+          {{bmiType}}{{ bmiResult }}
         </h2>
         <el-table
           :data="tableData"
@@ -174,7 +176,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           {{ startWeight }}~{{ endWeight }} KG
         </span>
       </div>
-      <span class="text-center rounded-md">查看更多</span>
+      <span class="text-center rounded-md">查看更多
+       
+      </span>
     </div>
   </div>
 </template>
